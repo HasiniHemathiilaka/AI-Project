@@ -1,9 +1,13 @@
 def max_profit(prices):
-    """Profit from the overall lowest and highest price in the list."""
-    if len(prices) < 2:
-        return 0
-    profit = max(prices) - min(prices)
-    return profit if profit > 0 else 0
+    """Maximum profit from one buy and one later sell. 0 if no profit exists."""
+    min_price = float('inf')
+    best = 0
+    for price in prices:
+        if price < min_price:
+            min_price = price
+        elif price - min_price > best:
+            best = price - min_price
+    return best
 
 
 def main():
